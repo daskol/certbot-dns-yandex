@@ -9,8 +9,8 @@ allows to perform dns-01 probe. This kind of challange is the only way for now
 to issue wildcard certificates with certbot.
 
 NOTE This plugin will not be requested to merge in certbot repo until like
-issues certbot/certbot#6464, certbot/certbot#6503, and certbot/certbot#6504 are
-solved first.
+issues [certbot/certbot][1][\#6464][6464], [certbot/certbot][1][\#6503][6503],
+and [certbot/certbot][1][\#6504][6504] are solved first.
 
 ### Installation
 
@@ -36,9 +36,9 @@ certbot certonly -a dns-yandex --dns-yandex-token <secret-token> ...
 
 ### CLI
 
-The package provides a CLI for management DNS records in Yandex DNS from shell
-as well. As soon as the package installed one can list, add, or remove DNS
-records (several examples below).
+The package provides CLI `yandex-dns` for management DNS records in Yandex DNS
+from shell as well. As soon as the package installed one can list, add, or
+remove DNS records (several examples below).
 
 ```bash
 # List DNS records for a domain.
@@ -48,3 +48,8 @@ yandex-dns rm example.org 31513386
 # Add TXT record to DNS for a domain.
 yandex-dns add example.org TXT "Hello, world!" --subdomain greeting
 ```
+
+[1]: https://github.com/certbot/certbot
+[6464]: https://github.com/certbot/certbot/issues/6464
+[6503]: https://github.com/certbot/certbot/issues/6503
+[6504]: https://github.com/certbot/certbot/issues/6504
