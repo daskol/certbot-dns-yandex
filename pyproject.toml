@@ -1,0 +1,12 @@
+# See PEP-517 and PEP-518 for details.
+
+[build-system]
+requires = ["setuptools", "setuptools_scm[toml]>=3.4", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+write_to = "certbot_dns_yandex/version.py"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
