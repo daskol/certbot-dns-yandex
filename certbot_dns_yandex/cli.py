@@ -12,6 +12,7 @@ from argparse import Action, ArgumentParser
 from dataclasses import asdict
 
 from .client import Client
+from .compat import removesuffix
 
 
 class EnvDefault(Action):
@@ -56,7 +57,7 @@ def del_domain(args):
 
 
 def list_domains(args):
-    domain = args.domain.removesuffix('.')
+    domain = removesuffix(args.domain, '.')
     records = Client(args.token).list(domain)
 
     if not records:
@@ -72,10 +73,10 @@ def list_domains(args):
                         content='CONTENT')
     print(header)
     for record in records:
-        if (fqdn := record.fqdn.removesuffix(domain)) == '':
+        if (fqdn := removesuffix(record.fqdn, domain)) == '':
             record.fqdn = '@'
         else:
-            record.fqdn = fqdn.removesuffix('.')
+            record.fqdn = removesuffix(fqdn, '.')
         print(fmt.format(**asdict(record)))
 
 

@@ -10,6 +10,7 @@ from certbot.interfaces import IAuthenticator, IPluginFactory
 from certbot.plugins.dns_common import DNSAuthenticator
 
 from .client import Client
+from .compat import removesuffix
 
 
 logger = getLogger(__name__)
@@ -60,7 +61,7 @@ class Authenticator(DNSAuthenticator):
 
         kwargs = {
             'ttl': Authenticator.TTL,
-            'subdomain': validation_name.removesuffix(domain)[:-1],
+            'subdomain': removesuffix(validation_name, domain)[:-1],
         }
 
         record = Client(self.conf('token')) \
