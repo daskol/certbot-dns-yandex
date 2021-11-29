@@ -6,3 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
 write_to = "certbot_dns_yandex/version.py"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
